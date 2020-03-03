@@ -1,0 +1,28 @@
+string serialize(int a){
+    if (a == 0){
+        return "0";
+    }
+
+    if (a < 0){
+        re_tmp = serialize(-a);
+        return "-"+re_tmp;
+    }
+
+    ///max bit  is  19(not include sign)
+    var inverse_re = new string();
+    temp = a;
+    while (temp != 0){
+        inverse_re.append(cast<char>(temp%10)+'0');
+        temp = temp / 10;
+    }
+
+
+    re = new string(inverse_re.size);
+        j = 0;
+        while (j < re.size){
+        re[j] = inverse_re[inverse_re.size-j-1];
+        j = j + 1;
+    }
+
+    return re;
+}

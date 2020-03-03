@@ -1,0 +1,26 @@
+#pragma once
+
+#include <Dragon/IR/DeclarationSpecifier.hpp>
+#include <Dragon/IR/Class.hpp>
+#include <Dragon/IR/DerivedType.hpp>
+#include <Dragon/IR/Instruction.hpp>
+#include <Dragon/IR/Function.hpp>
+#include <Dragon/IR/Variable.hpp>
+#include <Dragon/IR/SymbolTable.hpp>
+#include <Dragon/IR/BasicBlock.hpp>
+#include <Dragon/IR/MemoryManager.hpp>
+#include <Dragon/IR/Statement.hpp>
+#include <Dragon/IR/Constant.hpp>
+#include <Dragon/IR/Context.hpp>
+#include <Dragon/IR/Module.hpp>
+#include <Dragon/IR/Access.hpp>
+#include <Dragon/IR/Index.hpp>
+#include <Dragon/IR/CALL.hpp>
+#include <Dragon/IR/Value.hpp>
+#include <Dragon/IR/GlobalVariable.hpp>
+#include <Dragon/IR/Cast.hpp>
+#include <Dragon/IR/Intrinsic.hpp>
+#include <Dragon/IR/FunctionCollection.hpp>
+#include <Dragon/IR/Pattern.hpp>
+#include <Dragon/IR/BasicBlock.hpp>
+#include <Dragon/ExecutionEngine.hpp>

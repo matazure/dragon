@@ -1,0 +1,461 @@
+/*
+int operator ^(int base, int exponent){
+    var re = 1;
+    for (var i = 0; i < exponent; ++i){
+        re = re * base;
+    }
+
+    return re;
+}
+
+float operator ^(float base, int exponent){
+    var re = 1.0;
+    for (var i = 0; i < exponent; ++i){
+        re = re * base;
+    }
+
+    return re;
+}
+
+int min(int x, int y){
+    if (x < y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+float min(float x, float y){
+    if (x < y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+int max(int x, int y){
+    if (x > y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+float max(float x, float y){
+    if (x > y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+class array#T{
+    var _p_data:T[];
+    var _size:int;
+    var _buf_size:int;
+
+    array(){
+        this._size = 0;
+        this._buf_size = 16;
+        this._p_data = new T:[this._buf_size];
+    }
+
+    array(int size){
+        this._size = size;
+        this._buf_size = max(16, size);
+        this._p_data = new T:[this._buf_size];
+    }
+
+    array(array rhs){
+        this._size = rhs._size;
+        this._buf_size = rhs._buf_size;
+        this._p_data = new T:[this._buf_size];
+        for (var i = 0; i < this._size; ++i){
+            this._p_data[i]  = rhs._p_data[i];
+        }
+    }
+
+    T this[int index]{
+        get{
+            //if (index >= this._size){
+            //    var info = "the index of array is outrange. ";
+            //    error_c(info._data._p_data);
+            //}
+
+            return this._p_data[index];
+        }
+        set{
+            this._p_data[index] = value;
+        }
+    }
+
+    int size{
+        get{
+            return this._size;
+        }
+    }
+
+    T push(T v){
+        ++this._size;
+        if (this._size > this._buf_size){
+            var buf_size = this._buf_size * 2;
+            var p_data = new T:[buf_size];
+            for (var i = 0;i < this._buf_size; ++i){
+                p_data[i] = this._p_data[i];
+            }
+            this._buf_size = buf_size;
+            this._p_data = p_data;
+        }
+        this._p_data[this._size-1] = v;
+        return v;
+    }
+}
+
+
+class string{
+    var    _data: array@byte;
+
+
+    string(int size){
+        this._data = new array@byte(size+1);
+        this._data[size] = '\0';
+    }
+
+    string(){
+        this._data = new array@byte(1);
+    }
+
+    string (array@byte data){
+        this = new string(data.size);
+        for (var i = 0; i < this.size; ++i){
+            this[i] = data[i];
+        }
+        this[this.size] = '\0';
+    }
+
+    string(byte[] c_str){
+        var i = 0;
+        while (c_str[i] != '\0'){
+            i = i + 1;
+        }
+
+        this._data = new array@byte(i + 1);
+
+        j = 0;
+        while (j <= i){
+            this._data[j] = c_str[j];
+            j = j + 1;
+        }
+    }
+
+    byte this[int index]{
+        get{
+             return this._data[index];
+        }
+        set{
+            this._data[index] = value;
+        }
+    }
+
+    int size{
+        get{
+            return this._data.size -1 ;
+        }
+    }
+
+    string append(byte c){
+        this._data[this._data.size-1] = c;
+        this._data.push('\0');
+
+        return this;
+    }
+}
+
+void error(string info){
+    error_c(info._data._p_data);
+}
+
+void print_(string s){
+    print_c(s._data._p_data);
+}
+
+// int operator/(int x, int y){
+//     if (y == 0){
+//         error("zero divide.");
+//         return 0;
+//     }else{
+//         return x / y;
+//     }
+// }
+
+float operator/(float x, float y){
+    if ( y == 0.0){
+        return 0.0;
+    }else{
+        return x / y;
+    }
+}
+
+string operator+(string lhs, string rhs){
+    re = new string(lhs.size+rhs.size);
+    re_i = 0;
+    for (var i = 0; i < lhs.size; ++i){
+        re[re_i] = lhs[i];
+        ++re_i;
+    }
+    for (var i = 0; i < rhs.size; ++i){
+        re[re_i] = rhs[i];
+        ++re_i;
+    }
+
+    return re;
+}
+
+string serialize(int a){
+    if (a == 0){
+        return "0";
+    }
+
+    if (a < 0){
+        re_tmp = serialize(-a);
+        return "-"+re_tmp;
+    }
+
+    ///max bit  is  19(not include sign)
+    var inverse_re = new string();
+    temp = a;
+    while (temp != 0){
+        inverse_re.append(cast<char>(temp%10)+'0');
+        temp = temp / 10;
+    }
+
+
+    re = new string(inverse_re.size);
+    j = 0;
+    while (j < re.size){
+        re[j] = inverse_re[inverse_re.size-j-1];
+        j = j + 1;
+    }
+
+    return re;
+}
+
+string serialize(bool x){
+    if (x){
+        return "true";
+    }
+
+    return "false";
+}
+
+string serialize(string x){
+    return "\"" + x + "\"";
+}
+
+string serialize(byte x){
+    re = new string(3);
+    re[0] = '\"';
+    re[1] = x;
+    re[2] = '\"';
+    return re;
+}
+
+string serialize(float value){
+    x = value;
+    ndorm = 0;
+    n = 4;
+    rounder = 0.00005;
+    re = new string();
+    x = x + rounder;
+
+    if (x < 0.0){
+        re.append('-');
+        x = -x;
+    }
+
+    int_part = cast<int>(x);
+    int_str = serialize(int_part);
+    j = 0;
+    re = re + int_str;
+
+    x = x - cast<float>(int_part);
+
+    if (x < 1.0){
+        re.append('.');
+
+        while (n > 0){
+            x = x * 10.0;
+            int_part = cast<int>(x);
+            re.append(cast<char>(int_part) + '0');
+            x = x - cast<float>(int_part);
+            n = n - 1;
+        }
+    }
+
+    return re;
+}
+
+string serialize(array@int a){
+    re = new array@byte(); ///todo, bug
+    re.push('[');
+    for (var i = 0; i < a.size; ++i){
+        tmp = serialize(a[i]);
+        for (var j = 0; j < tmp.size; ++j){
+            re.push(tmp[j]);
+        }
+        re.push(',');
+    }
+    re[re.size-1] = ']';
+    return new string(re);
+}
+
+class matrix#T{
+    var _data:array@T;
+    var _size1: int;
+    var _size2: int;
+
+    matrix(int row, int col){
+        this._size1 = row;
+        this._size2 = col;
+        this._data = new array@T(row * col);
+    }
+
+    int size1{
+        get{
+            return this._size1;
+        }
+    }
+
+    int size2{
+        get{
+            return this._size2;
+        }
+    }
+
+    array@int size{
+        get{
+            var re = new array@int(2);
+            re[0] = this.size1;
+            re[1] = this.size2;
+
+            return re;
+        }
+    }
+
+    T this[int row, int col]{
+        get{
+            return  this._data[this.size2 * row + col];
+        }set{
+            this._data[this.size2 * row + col] = value;
+        }
+    }
+}
+
+
+matrix@int matrixi(int size1, int size2){
+    var re = new matrix@int(size1, size2);
+    return re;
+}
+
+//matrix@int matrixi(int size1, int size2, int init_value){
+//    var re = new matrix@int(size1, size2);
+//    for (var i = 0; i < re.size1; ++i){
+//        for (var j = 0; j < re.size2; ++j){
+//            re[i,j] = init_value;
+//        }
+//    }
+
+//    return re;
+//}
+
+matrix@float matrixf(int size1, int size2){
+    var re = new matrix@float(size1, size2);
+    return re;
+}
+
+matrix@int operator+(matrix@int lhs, matrix@int rhs){
+    var re = new matrix@int(lhs.size1, lhs.size2);
+
+    for (var i = 0; i < re.size1; ++i){
+        for (var j = 0; j < re.size2; ++j){
+            re[i,j] = lhs[i,j]+rhs[i,j];
+        }
+    }
+
+    return re;
+}
+
+
+
+string serialize(matrix@int a){
+    var re = new string();
+    re.append('[');
+    for (var i = 0; i < a.size1; ++i){
+        re.append('[');
+        for(var j = 0; j < a.size2; ++j){
+            re = re + serialize(a[i,j]);
+            if (j == a.size2-1 ){
+                break;
+            }
+
+            re.append(',');
+            re.append(' ');
+        }
+        re.append(']');
+        if (i == a.size1 -1){
+            break;
+        }
+        re.append(',');
+        re.append(' ');
+    }
+    re.append(']');
+
+    return re;
+}
+
+class figure{
+    var id:string;
+
+    figure(string id){
+        this.id = id;
+    }
+};
+
+string serialize(figure fig){
+    return "{\"figure\":\""+fig.id+"\"}";
+}
+
+string serialize(array@figure n){
+    return " ";
+}
+
+figures = new array@figure(0);
+
+figure plot(matrix@int points){
+    var data_str = serialize(points);
+    plot_c(data_str._data._p_data);
+    var fig = new figure("untiled");
+    figures.push(fig);
+    return fig;
+}
+
+figure test_plot(){
+    var data = matrixi(10, 2);
+    for (var i = 0; i < data.size1; ++i){
+        data[i,0] = 10 * i;
+        data[i,1] = 10 * i^2 / 10;
+    }
+    return plot(data);
+}
+
+void output(string msg){
+    output_c(msg._data._p_data);
+}
+
+void expect(bool v, string msg){
+    expect_c(v, msg._data._p_data);
+}
+
+
+"matazure is ready.";
+*/
