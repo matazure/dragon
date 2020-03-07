@@ -20,7 +20,7 @@ target_include_directories(dragon_front
 
 
 add_executable(dragon Shell/main.cpp Dragon/Compiler/Compiler.cpp Dragon/Parser/parse.cpp Dragon/Issue/handler.cpp)
-target_link_libraries(dragon dragon_front 
+target_link_libraries(dragon PRIVATE dragon_front
     LLVMJITLink
     LLVMInterpreter
     LLVMExecutionEngine

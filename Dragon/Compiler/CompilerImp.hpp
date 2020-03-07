@@ -128,9 +128,10 @@ namespace Dragon{namespace detail{
         :_isTerminal(is_terminal),
         _spModule(IR::create_buildin_module(IR::Context::create())),
         _spBuilder(new CodeGen::Builder(_spModule)),
-        _spEngine(new ExecutionEngine(_spModule)),
-        _spStatementCodeGen(new CodeGen::StatementCodeGen(_spBuilder))
+        _spEngine(new ExecutionEngine(_spModule))
+        // _spStatementCodeGen(new CodeGen::StatementCodeGen(_spBuilder))
         {
+            _spStatementCodeGen = make_shared<CodeGen::StatementCodeGen>(_spBuilder);
             _spBuilder->engine(_spEngine);
             //add ./ search path
 //            add_search_path(".");

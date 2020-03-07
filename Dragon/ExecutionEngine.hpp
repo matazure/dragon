@@ -27,7 +27,8 @@ namespace Dragon{
     public:
         ExecutionEngine(shared_ptr<IR::imodule> spModule)
         : _spModule(spModule){
-
+            LLVMLinkInMCJIT();
+            // LLVMLinkI
             std::string errStr;
             unique_ptr<llvm::Module> upModule(spModule->llvm_module());
             _p_llvm_engine =

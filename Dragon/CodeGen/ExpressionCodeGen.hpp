@@ -43,8 +43,10 @@ namespace Dragon{namespace CodeGen{
         typedef IR::Address result_type;
         
         PrimaryExpressionCodeGen(shared_ptr<Builder> spBuilder, shared_ptr<ExpCg> spExpressionCodeGen)
-        :   _spLiteralExpressionCodeGen(make_shared<LiteralExpressionCodeGen>(spBuilder)),
-            _wpExpressionCodeGen(spExpressionCodeGen){ }
+        :   _spBuilder(spBuilder),   
+            _spLiteralExpressionCodeGen(make_shared<LiteralExpressionCodeGen>(spBuilder)),
+            _wpExpressionCodeGen(spExpressionCodeGen)
+        { }
         
         result_type operator()(const AST::PrimaryExpression &ast){
             return apply_visitor(*this, ast);

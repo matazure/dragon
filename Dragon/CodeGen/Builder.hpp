@@ -428,7 +428,7 @@ namespace Dragon{namespace CodeGen{
         
     private:
         shared_ptr<IContext>                            _spContext;
-        shared_ptr<ISymbolTable>                             _spCurrentScope;
+        shared_ptr<ISymbolTable>                        _spCurrentScope;
         shared_ptr<IBasicBlock>                         _spCurrentBlock;
         std::stack<shared_ptr<IFunction>>               _functions;
         shared_ptr<ExecutionEngine>                     _spEngine;
