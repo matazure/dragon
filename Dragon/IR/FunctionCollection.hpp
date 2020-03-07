@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <Dragon/IR/interface.hpp>
+#include <Dragon/IR/Interface.hpp>
 #include <Dragon/Issue/Issue.hpp>
 
 namespace Dragon{namespace IR{

@@ -36,8 +36,12 @@ namespace Dragon{namespace IR{
             return spContext;
         }
         
-        llvm::LLVMContext &llvmContext() const{
-            return llvm::getGlobalContext();
+        const llvm::LLVMContext &llvmContext() const{
+            return _llvmContext;
+        }
+
+        llvm::LLVMContext &llvmContext() {
+            return _llvmContext;
         }
         
         shared_ptr<IType> getType(const std::string &name) const{
@@ -48,6 +52,7 @@ namespace Dragon{namespace IR{
         
     private:
         std::map<std::string, shared_ptr<IType>>    _types;
+        llvm::LLVMContext   _llvmContext;
     };
     
 }}

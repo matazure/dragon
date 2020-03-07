@@ -2,7 +2,7 @@
 
 #include <functional>
 #include <vector>
-#include <Dragon/config.hpp>
+#include <Dragon/Config.hpp>
 
 namespace Dragon{
     

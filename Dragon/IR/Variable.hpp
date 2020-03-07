@@ -1,5 +1,5 @@
 //
-//  value.hpp
+//  Value.hpp
 //  binding
 //
 //  Created by 张志敏 on 10/28/13.
@@ -10,8 +10,8 @@
 
 #include <limits>
 
-#include <Dragon/IR/interface.hpp>
-#include <Dragon/IR/value.hpp>
+#include <Dragon/IR/Interface.hpp>
+#include <Dragon/IR/Value.hpp>
 #include <Dragon/IR/DerivedType.hpp>
 
 namespace Dragon{namespace IR{

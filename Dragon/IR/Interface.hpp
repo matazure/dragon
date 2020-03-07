@@ -13,7 +13,7 @@
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/Module.h"
 #include <Dragon/AST/Statement.hpp>
-#include <Dragon/IR/declarationSpecifier.hpp>
+#include <Dragon/IR/DeclarationSpecifier.hpp>
 #include <Dragon/IR/Address.hpp>
 
 
@@ -94,9 +94,9 @@ namespace Dragon{namespace IR{
     public:
         virtual shared_ptr<IType> type() const = 0;
         virtual llvm::Value *llvmValue() const = 0;
-        virtual void dump() const{
-            assert(false);
-        }
+        //virtual void dump() const{
+        //     assert(false);
+        // }
     };
 
     class IInstruction: public IValue{
@@ -154,7 +154,8 @@ namespace Dragon{namespace IR{
 
     class IContext{
     public:
-        virtual llvm::LLVMContext &llvmContext() const = 0;
+        virtual const llvm::LLVMContext &llvmContext() const = 0;
+        virtual llvm::LLVMContext & llvmContext() = 0;
         virtual shared_ptr<IType> getType(const std::string &name) const = 0;
     };
 

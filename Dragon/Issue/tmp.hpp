@@ -2,7 +2,7 @@
 
 #include <Dragon/Issue/tmp.hpp>
 
-#include <Dragon/IR/interface.hpp> //todo
+#include <Dragon/IR/Interface.hpp> //todo
 
 namespace Dragon{
 

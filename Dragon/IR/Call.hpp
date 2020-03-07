@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Dragon/IR/class.hpp>
-#include <Dragon/IR/utility.hpp>
+#include <Dragon/IR/Class.hpp>
+#include <Dragon/IR/Utility.hpp>
 #include <Dragon/IR/FunctionCollection.hpp>
 
 namespace Dragon{namespace IR{

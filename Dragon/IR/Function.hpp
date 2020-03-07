@@ -127,9 +127,9 @@ namespace Dragon{namespace IR{
         virtual llvm::Constant *llvmConstant() const                     { return llvm_function(); }
         virtual bool is_defined() const                             { return _is_defined; }
 
-        virtual void dump() const {
-            _p_llvm_fun->dump();
-        }
+        //virtual void dump() const {
+        //     _p_llvm_fun->dump();
+        // }
 
         std::vector<shared_ptr<argument>> arguments() const{
             return _args;

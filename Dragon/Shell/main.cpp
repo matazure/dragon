@@ -1,6 +1,8 @@
 #include <iostream>
 #include <Dragon/Compiler/Compiler.h>
 
+using namespace std;
+
 
 int main(int argc, char *argv[]){    
     std::cout << "start11 from " << argv[0] << std::endl;

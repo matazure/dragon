@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Dragon/IR/class.hpp>
-#include <Dragon/IR/utility.hpp>
+#include <Dragon/IR/Class.hpp>
+#include <Dragon/IR/Utility.hpp>
 
 namespace Dragon{namespace IR{
     
@@ -22,7 +22,7 @@ namespace Dragon{namespace IR{
             assert(sp_point_type);
             _sp_type = sp_point_type->valueType();
             
-            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->llvmValue(), sp_index->llvmValue(), "",sp_block->llvmBasicBlock());
+            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->type()->llvmType(), sp_variable->llvmValue(), sp_index->llvmValue(), "",sp_block->llvmBasicBlock());
         }
         
         virtual llvm::Value *llvmValue() const       { return _p_llvm_element_ptr; }
@@ -63,7 +63,7 @@ namespace Dragon{namespace IR{
             std::vector<llvm::Value *> llvm_idxs;
             llvm_idxs.push_back(zero);
             llvm_idxs.push_back(sp_index->llvmValue());
-            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->llvmValue(), llvm_idxs, "",sp_block->llvmBasicBlock());
+            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->valueType()->llvmType(), sp_variable->llvmValue(), llvm_idxs, "",sp_block->llvmBasicBlock());
         }
         
         virtual llvm::Value *llvmValue() const       { return _p_llvm_element_ptr; }

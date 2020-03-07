@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <Dragon/IR/class.hpp>
+#include <Dragon/IR/Class.hpp>
 
 namespace Dragon{namespace IR{
         
@@ -41,7 +41,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const              { return _sp_type; }
         llvm::Constant *  llvmConstant() const                    { return _pLLvmValue; }
         llvm::Value *llvmValue() const                            { return llvmConstant(); }
-        virtual void dump() const                           { return _pLLvmValue->dump(); }
+        //virtual void dump() const                           { return _pLLvmValue->dump(); }
         
     private:
         shared_ptr<IType>               _sp_type;
@@ -73,7 +73,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const                  { return _sp_type; }
         llvm::Constant *  llvmConstant() const                       { return _pLLvmValue; }
         llvm::Value *llvmValue() const                               { return llvmConstant(); }
-        virtual void dump() const                       { return _pLLvmValue->dump(); }
+        //virtual void dump() const                       { return _pLLvmValue->dump(); }
         
     private:
         shared_ptr<Class>         _sp_type;
@@ -101,7 +101,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const                  { return _sp_type; }
         llvm::Constant *  llvmConstant() const                       { assert(_pLLvmValue); return _pLLvmValue; }
         llvm::Value *llvmValue() const                               { return llvmConstant(); }
-        virtual void dump() const                       { return _pLLvmValue->dump(); }
+        //virtual void dump() const                       { return _pLLvmValue->dump(); }
         
     private:
         shared_ptr<ArrayType>               _sp_type;
@@ -119,7 +119,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const               { return _sp_type; }
         llvm::Constant *  llvmConstant() const                   { return _pLLvmValue; }
         llvm::Value *llvmValue() const                           { return llvmConstant(); }
-        virtual void dump() const                       { return _pLLvmValue->dump(); }
+        //virtual void dump() const                       { return _pLLvmValue->dump(); }
         
     private:
         shared_ptr<IType>       _sp_type;

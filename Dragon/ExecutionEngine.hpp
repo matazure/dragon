@@ -10,16 +10,15 @@
 
 #include <iostream>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
-#include <llvm/ExecutionEngine/JIT.h>
 #include <llvm/ExecutionEngine/GenericValue.h>
 #include "llvm/Analysis/Passes.h"
 #include "llvm/IR/Verifier.h"
-#include "llvm/PassManager.h"
+#include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Support/TargetSelect.h"
 #include "llvm/Transforms/Scalar.h"
 #include <boost/function_types/parameter_types.hpp>
 #include <boost/mpl/for_each.hpp>
-#include <Dragon/IR/interface.hpp>
+#include <Dragon/IR/Interface.hpp>
 
 
 namespace Dragon{
@@ -30,8 +29,9 @@ namespace Dragon{
         : _spModule(spModule){
 
             std::string errStr;
+            unique_ptr<llvm::Module> upModule(spModule->llvm_module());
             _p_llvm_engine =
-                llvm::EngineBuilder(spModule->llvm_module())
+                llvm::EngineBuilder(std::move(upModule))
                 .setErrorStr(&errStr)
                 .setEngineKind(llvm::EngineKind::JIT)
                 .create();
@@ -58,21 +58,21 @@ namespace Dragon{
             llvm::FunctionPassManager OurFPM(_spModule->llvm_module());
             // Set up the optimizer pipeline.  Start with registering info about how the
             // target lays out data structures.
-            //OurFPM.add(new DataLayout(*_p_llvm_engine->getDataLayout()));
+            //OurFPM.addPass(new DataLayout(*_p_llvm_engine->getDataLayout()));
             // Provide basic AliasAnalysis support for GVN.
-            OurFPM.add(llvm::createBasicAliasAnalysisPass());
-            // Promote allocas to registers.
-            OurFPM.add(llvm::createPromoteMemoryToRegisterPass());
-            // Do simple "peephole" optimizations and bit-twiddling optzns.
-            OurFPM.add(llvm::createInstructionCombiningPass());
-            // Reassociate expressions.
-            OurFPM.add(llvm::createReassociatePass());
-            // Eliminate Common SubExpressions.
-            OurFPM.add(llvm::createGVNPass());
+            // OurFPM.addPass(llvm::createBasicAliasAnalysisPass());
+            // // Promote allocas to registers.
+            // OurFPM.addPass(llvm::createPromoteMemoryToRegisterPass());
+            // // Do simple "peephole" optimizations and bit-twiddling optzns.
+            // OurFPM.addPass(llvm::createInstructionCombiningPass());
+            // // Reassociate expressions.
+            // OurFPM.addPass(llvm::createReassociatePass());
+            // // Eliminate Common SubExpressions.
+            // OurFPM.addPass(llvm::createGVNPass());
             // Simplify the control flow graph (deleting unreachable blocks, etc).
-            OurFPM.add(llvm::createCFGSimplificationPass());
+            // OurFPM.addPass(llvm::createCFGSimplificationPass());
 
-            OurFPM.doInitialization();
+            // OurFPM.doInitialization();
 
             return _p_llvm_engine->getPointerToFunction(sp_fun->llvm_function());
         }

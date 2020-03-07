@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dragon/ast/tag.hpp>
-#include <dragon/ast/identifier.hpp>
-#include <dragon/ast/attribute.hpp>
+#include <Dragon/AST/Tag.hpp>
+#include <Dragon/AST/Identifier.hpp>
+#include <Dragon/AST/Attribute.hpp>
 
 namespace Dragon{namespace AST{
     

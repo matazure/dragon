@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Dragon/IR/interface.hpp>
+#include <Dragon/IR/Interface.hpp>
 #include <Dragon/AST/Statement.hpp>
 #include <Dragon/IR/Constant.hpp>
 

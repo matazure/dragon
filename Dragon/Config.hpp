@@ -1,8 +1,12 @@
 #pragma once
 
 #include <memory>
+#include <cstdlib>
 
 namespace Dragon{
+    
+    using namespace std;
+
     typedef int64_t     int_t;
     typedef double  float_t;
     typedef bool    bool_t;

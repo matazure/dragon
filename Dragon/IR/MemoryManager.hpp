@@ -10,8 +10,8 @@
 
 #include <Dragon/IR/DerivedType.hpp>
 #include <Dragon/IR/Constant.hpp>
-#include <Dragon/IR/instruction.hpp>
-#include <Dragon/IR/cast.hpp>
+#include <Dragon/IR/Instruction.hpp>
+#include <Dragon/IR/Cast.hpp>
 
 namespace Dragon{namespace IR{
     

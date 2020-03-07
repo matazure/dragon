@@ -15,7 +15,7 @@
 #include <Dragon/IR/Module.hpp>
 #include <Dragon/IR/Access.hpp>
 #include <Dragon/IR/Index.hpp>
-#include <Dragon/IR/CALL.hpp>
+#include <Dragon/IR/Call.hpp>
 #include <Dragon/IR/Value.hpp>
 #include <Dragon/IR/GlobalVariable.hpp>
 #include <Dragon/IR/Cast.hpp>

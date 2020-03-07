@@ -254,7 +254,7 @@ namespace Dragon{namespace IR{
             std::vector<llvm::Value *> llvm_idxs;
             llvm_idxs.push_back(zero);
             llvm_idxs.push_back(field_offset);
-            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->llvmValue(), llvm_idxs, "", sp_block->llvmBasicBlock());
+            _p_llvm_element_ptr = llvm::GetElementPtrInst::Create(sp_variable->valueType()->llvmType(), sp_variable->llvmValue(), llvm_idxs, "", sp_block->llvmBasicBlock());
         }
         
         virtual shared_ptr<IType> valueType() const            { return _sp_type; }

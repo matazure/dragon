@@ -3,7 +3,7 @@
 #include <exception>
 #include <vector>
 #include <boost/property_tree/json_parser.hpp>
-#include <Dragon/config.hpp>
+#include <Dragon/Config.hpp>
 
 namespace Dragon{namespace Issue{
 

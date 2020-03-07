@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <Dragon/IR/interface.hpp>
+#include <Dragon/IR/Interface.hpp>
 
 namespace Dragon{namespace IR{
     
@@ -21,7 +21,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -37,7 +37,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -53,7 +53,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -69,7 +69,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -86,7 +86,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -102,7 +102,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;
@@ -118,7 +118,7 @@ namespace Dragon{namespace IR{
         virtual shared_ptr<IType> type() const          { return _sp_type; }
         virtual llvm::Instruction *llvm_instruction() const   { return _p_llvm_value; }
         virtual llvm::Value * llvmValue() const              { return llvm_instruction(); }
-        virtual void dump() const                       { return _p_llvm_value->dump(); }
+        //virtual void dump() const                       { return _p_llvm_value->dump(); }
         
     private:
         shared_ptr<IType>   _sp_type;

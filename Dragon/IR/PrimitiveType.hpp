@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include <Dragon/config.hpp>
-#include <Dragon/IR/interface.hpp>
+#include <Dragon/Config.hpp>
+#include <Dragon/IR/Interface.hpp>
 
 
 namespace Dragon{namespace IR{

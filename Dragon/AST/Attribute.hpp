@@ -1,5 +1,5 @@
 //
-//  attribute.hpp
+//  Attribute.hpp
 //  Dragon
 //
 //  Created by 张志敏 on 2/13/15.
